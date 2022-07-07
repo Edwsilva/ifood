@@ -429,7 +429,7 @@ const Home = () => {
               borderRadius: 25,
               alignItems: 'center',
               justifyContent: 'center',
-              //  backgroundColor: COLORS.white,
+              // backgroundColor: 'red',
               backgroundColor:
                 selectedCategory?.id === item.id
                   ? COLORS.white
@@ -518,12 +518,13 @@ const Home = () => {
     const renderItem = ({item}) => (
       <TouchableOpacity
         style={{marginBottom: SIZES.padding * 2}}
-        onPress={() =>
-          navigation.navigate('Restaurant', {
-            item,
-            currentLocation,
-          })
-        }>
+        // onPress={() =>
+        //   navigation.navigate('Restaurant', {
+        //     item,
+        //     currentLocation,
+        //   })
+        // }>
+      >
         {/* Image */}
         <View
           style={{
@@ -629,6 +630,7 @@ const Home = () => {
     <SafeAreaView>
       {renderHeader()}
       {renderMainCategories()}
+      {renderRestaurantList()}
     </SafeAreaView>
   );
 };
