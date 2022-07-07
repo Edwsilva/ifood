@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   SafeAreaView,
@@ -374,7 +376,7 @@ const Home = () => {
             style={{
               width: '70%',
               height: '100%',
-              backgroundColor: COLORS.primary,
+              backgroundColor: COLORS.lightGray2,
               //backgroundColor: '#fdd',
               alignItems: 'center',
               justifyContent: 'center',
@@ -410,8 +412,9 @@ const Home = () => {
           style={{
             padding: SIZES.padding,
             paddingBottom: SIZES.padding * 2,
+            // backgroundColor: COLORS.primary,
             backgroundColor:
-              selectedCategory?.id == item.id ? COLORS.primary : COLORS.white,
+              selectedCategory?.id === item.id ? COLORS.primary : COLORS.white,
             borderRadius: SIZES.radius,
             alignItems: 'center',
             justifyContent: 'center',
@@ -426,8 +429,9 @@ const Home = () => {
               borderRadius: 25,
               alignItems: 'center',
               justifyContent: 'center',
+              //  backgroundColor: COLORS.white,
               backgroundColor:
-                selectedCategory?.id == item.id
+                selectedCategory?.id === item.id
                   ? COLORS.white
                   : COLORS.lightGray,
             }}>
@@ -440,12 +444,11 @@ const Home = () => {
               }}
             />
           </View>
-
           <Text
             style={{
               marginTop: SIZES.padding,
               color:
-                selectedCategory?.id == item.id ? COLORS.white : COLORS.black,
+                selectedCategory?.id === item.id ? COLORS.white : COLORS.black,
               ...FONTS.body5,
             }}>
             {item.name}
@@ -469,6 +472,46 @@ const Home = () => {
         />
       </View>
     );
+
+    // onPress={() => onSelectCategory(item)}>
+
+    //   <Image
+    //     source={item.icon}
+    //     resizeMode="contain"
+    //     style={{
+    //       width: 30,
+    //       height: 30,
+    //     }}
+    //   />
+    // </View>
+    // <Text
+    //   style={{
+    //     marginTop: SIZES.padding,
+    //     color:
+    //       selectedCategory?.id == item.id ? COLORS.white : COLORS.black,
+    //     ...FONTS.body5,
+    //   }}>
+    //   {item.name}
+    // </Text>
+    // </TouchableOpacity>
+    // );
+    // };
+
+    // return (
+    //   <View style={{padding: SIZES.padding * 2}}>
+    //     <Text style={{...FONTS.h1}}>Main</Text>
+    //     <Text style={{...FONTS.h1}}>Categories</Text>
+
+    //     <FlatList
+    //       data={categories}
+    //       horizontal
+    //       showsHorizontalScrollIndicator={false}
+    //       keyExtractor={item => `${item.id}`}
+    //       renderItem={renderItem}
+    //       contentContainerStyle={{paddingVertical: SIZES.padding * 2}}
+    //     />
+    //   </View>
+    // );
   }
 
   function renderRestaurantList() {
@@ -582,7 +625,12 @@ const Home = () => {
     );
   }
 
-  return <SafeAreaView>{renderHeader()}</SafeAreaView>;
+  return (
+    <SafeAreaView>
+      {renderHeader()}
+      {renderMainCategories()}
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({

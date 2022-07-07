@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {View, Image, TouchableOpacity, SliderBase} from 'react-native';
 import {
@@ -7,7 +8,7 @@ import {
 import Svg, {Path} from 'react-native-svg';
 import {isIphoneX} from 'react-native-iphone-x-helper';
 
-import {Home} from '../screens';
+import {Home, OrderDelivery, Restaurant} from '../screens';
 
 import {COLORS, icons} from '../constants';
 
@@ -91,7 +92,7 @@ const Tabs = () => {
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
-        headerShow: false,
+        headerShow: true,
         style: {
           position: 'absolute',
           left: 0,
@@ -127,7 +128,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Search"
-        component={Home}
+        component={OrderDelivery}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
@@ -146,7 +147,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Like"
-        component={Home}
+        component={Restaurant}
         options={{
           tabBarIcon: ({focused}) => (
             <Image
