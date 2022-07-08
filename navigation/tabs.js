@@ -15,7 +15,7 @@ import {COLORS, icons} from '../constants';
 const Tab = createBottomTabNavigator();
 
 const TabBarCustomButton = ({accessibilityState, children, onPress}) => {
-  console.log(accessibilityState);
+  //console.log(accessibilityState);
   var isSelected = accessibilityState.selected;
 
   if (isSelected) {

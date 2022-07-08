@@ -13,7 +13,7 @@ import {
 
 import {icons, images, SIZES, COLORS, FONTS} from '../constants';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const initialCurrentLocation = {
     streetName: 'Kuching',
     gps: {
@@ -340,13 +340,15 @@ const Home = () => {
     );
 
     setRestaurants(restaurantList);
-
     setSelectedCategory(category);
   }
 
   function getCategoryNameById(id) {
     let category = categories.filter(a => a.id == id);
 
+    // if (category.length > 0) {
+    //   console.log(category[0].name);
+    // }
     if (category.length > 0) return category[0].name;
 
     return '';
@@ -376,7 +378,7 @@ const Home = () => {
             style={{
               width: '70%',
               height: '100%',
-              backgroundColor: COLORS.lightGray2,
+              backgroundColor: COLORS.white,
               //backgroundColor: '#fdd',
               alignItems: 'center',
               justifyContent: 'center',
@@ -518,13 +520,12 @@ const Home = () => {
     const renderItem = ({item}) => (
       <TouchableOpacity
         style={{marginBottom: SIZES.padding * 2}}
-        // onPress={() =>
-        //   navigation.navigate('Restaurant', {
-        //     item,
-        //     currentLocation,
-        //   })
-        // }>
-      >
+        onPress={() =>
+          navigation.navigate('Restaurant', {
+            item,
+            currentLocation,
+          })
+        }>
         {/* Image */}
         <View
           style={{
@@ -556,10 +557,8 @@ const Home = () => {
             <Text style={{...FONTS.h4}}>{item.duration}</Text>
           </View>
         </View>
-
         {/* Restaurant Info */}
         <Text style={{...FONTS.body2}}>{item.name}</Text>
-
         <View
           style={{
             marginTop: SIZES.padding,
@@ -627,7 +626,7 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       {renderHeader()}
       {renderMainCategories()}
       {renderRestaurantList()}
