@@ -28,6 +28,66 @@ const Restaurant = ({route, navigation}) => {
     setCurrentLocation(currentLocation);
   });
 
+  function editOrder(action, menuId, price) {
+    console.log('ORDER ITEMS');
+    console.log(orderItems);
+    let orderList = orderItems.slice();
+    console.log('ORDERLIST');
+    console.log(orderList);
+    let item = orderList.filter(a => a.menuId === menuId);
+    console.log('ITEM');
+    console.log(item);
+    if (action === '+') {
+      if (item.length > 0) {
+        let newQty = item[0].qty + 1;
+        item[0].qty = newQty;
+        item[0].total = item[0].qty * price;
+      } else {
+        console.log('NO ELSE');
+        const newItem = {
+          menuId: menuId,
+          qty: 1,
+          price: price,
+          total: price,
+        };
+        orderList.push(newItem);
+      }
+
+      setOrderItems(orderList);
+    } else {
+      if (item.length > 0) {
+        if (item[0]?.qty > 0) {
+          let newQty = item[0].qty - 1;
+          item[0].qty = newQty;
+          item[0].total = newQty * price;
+        }
+      }
+
+      setOrderItems(orderList);
+    }
+  }
+
+  function getOrderQty(menuId) {
+    let orderItem = orderItems.filter(a => a.menuId === menuId);
+    console.log(orderItem);
+    if (orderItem.length > 0) {
+      return orderItem[0].qty;
+    }
+
+    return 0;
+  }
+
+  function getBasketItemCount() {
+    let itemCount = orderItems.reduce((a, b) => a + (b.qty || 0), 0);
+
+    return itemCount;
+  }
+
+  function sumOrder() {
+    let total = orderItems.reduce((a, b) => a + (b.total || 0), 0);
+
+    return total.toFixed(2);
+  }
   function renderHeader() {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -143,7 +203,7 @@ const Restaurant = ({route, navigation}) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
-                  <Text style={{...FONTS.h2}}>5</Text>
+                  <Text style={{...FONTS.h2}}>{getOrderQty(item.menuId)}</Text>
                 </View>
                 <TouchableOpacity
                   style={{
@@ -254,16 +314,17 @@ const Restaurant = ({route, navigation}) => {
     );
   }
   function renderOrder() {
+    // console.log(FONTS.body1);
     return (
       <View>
         {renderDots()}
         <View
           style={{
-            backgroundColor: 'COLORS.white',
+            backgroundColor: COLORS.white,
             borderTopLeftRadius: 40,
             borderTopRightRadius: 40,
-          }}></View>
-        {/* <View
+          }}>
+          <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -285,6 +346,7 @@ const Restaurant = ({route, navigation}) => {
               paddingVertical: SIZES.padding * 2,
               paddingHorizontal: SIZES.padding * 3,
             }}>
+            {/* Location icon */}
             <View style={{flexDirection: 'row'}}>
               <Image
                 source={icons.pin}
@@ -298,9 +360,8 @@ const Restaurant = ({route, navigation}) => {
               <Text style={{marginLeft: SIZES.padding, ...FONTS.h4}}>
                 Location
               </Text>
-            </View> */}
-
-        {/* <View style={{flexDirection: 'row'}}>
+            </View>
+            <View style={{flexDirection: 'row'}}>
               <Image
                 source={icons.master_card}
                 resizeMode="contain"
@@ -312,10 +373,10 @@ const Restaurant = ({route, navigation}) => {
               />
               <Text style={{marginLeft: SIZES.padding, ...FONTS.h4}}>8888</Text>
             </View>
-          </View> */}
+          </View>
 
-        {/* Order Button */}
-        {/* <View
+          {/* Order Button  */}
+          <View
             style={{
               padding: SIZES.padding * 2,
               alignItems: 'center',
@@ -329,18 +390,13 @@ const Restaurant = ({route, navigation}) => {
                 alignItems: 'center',
                 borderRadius: SIZES.radius,
               }}
-              onPress={() =>
-                navigation.navigate('OrderDelivery', {
-                  restaurant: restaurant,
-                  currentLocation: currentLocation,
-                })
-              }>
+              onPress={() => navigation.navigate('OrderDelivery')}>
               <Text style={{color: COLORS.white, ...FONTS.h2}}>Order</Text>
             </TouchableOpacity>
-          </View> */}
-        {/* </View> */}
+          </View>
+        </View>
 
-        {/* {isIphoneX() && (
+        {isIphoneX() && (
           <View
             style={{
               position: 'absolute',
@@ -350,7 +406,7 @@ const Restaurant = ({route, navigation}) => {
               height: 34,
               backgroundColor: COLORS.white,
             }}></View>
-        )} */}
+        )}
       </View>
     );
   }

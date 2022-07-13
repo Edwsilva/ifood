@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+//AIzaSyAEIHeBKFUG7e1pFI-hp9ZBSMymkMyJcP0 API KEY
+
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 //import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
