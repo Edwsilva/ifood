@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 //AIzaSyAEIHeBKFUG7e1pFI-hp9ZBSMymkMyJcP0 API KEY
+const key = 'AIzaSyAk23hHazUQRm_Q8mql9SjDh8e4y_7pdqE';
 
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-//import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 //import MapViewDirections from 'react-native-maps-directions';
 
 import {COLORS, FONTS, icons, SIZES, GOOGLE_API_KEY} from '../constants';
@@ -12,6 +13,15 @@ const OrderDelivery = () => {
   return (
     <View style={{flex: 1}}>
       <Text>Order Delivery</Text>
+      <MapView
+        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+        //style={styles.map}
+        region={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        }}></MapView>
     </View>
   );
 
