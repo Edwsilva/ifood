@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-//AIzaSyAEIHeBKFUG7e1pFI-hp9ZBSMymkMyJcP0 API KEY
-const key = 'AIzaSyAk23hHazUQRm_Q8mql9SjDh8e4y_7pdqE';
 
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
@@ -11,18 +9,26 @@ import {COLORS, FONTS, icons, SIZES, GOOGLE_API_KEY} from '../constants';
 
 const OrderDelivery = () => {
   return (
-    <View style={{flex: 1}}>
-      <Text>Order Delivery</Text>
-      <MapView
-        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-        //style={styles.map}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}></MapView>
-    </View>
+    // <View style={{flex: 1}}>
+    //   <Text>Order Delivery</Text>
+    //   <MapView
+    //     provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+    //     //style={styles.map}
+    //     region={{
+    //       latitude: 37.78825,
+    //       longitude: -122.4324,
+    //       latitudeDelta: 0.015,
+    //       longitudeDelta: 0.0121,
+    //     }}></MapView>
+    // </View>
+    <MapView
+      initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+    />
   );
 
   //  import React, {useState, useRef, useEffect} from 'react';

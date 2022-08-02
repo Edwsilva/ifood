@@ -8,6 +8,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Restaurant, OrderDelivery} from './screens';
 import Tabs from './navigation/tabs';
 
+import {enableLatestRenderer} from 'react-native-maps';
+
+enableLatestRenderer();
+
 const Stack = createStackNavigator();
 
 const App = () => {
