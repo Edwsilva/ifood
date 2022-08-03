@@ -1,5 +1,14 @@
 apply plugin: "com.android.application"
+/**
+* Extra step for Android - react-native-config
+* https://github.com/luggit/react-native-config#extra-step-for-android
+*/
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
+project.ext.envConfigFiles = [
+    debug: ".env",
+    release: ".env.production",
+]
 import com.android.build.OutputFile
 
 /**
