@@ -23,10 +23,9 @@ const Restaurant = ({route, navigation}) => {
 
   React.useEffect(() => {
     let {item, currentLocation} = route.params;
-    console.log(item);
     setRestaurant(item);
     setCurrentLocation(currentLocation);
-  });
+  }, [route.params]);
 
   function editOrder(action, menuId, price) {
     console.log('ORDER ITEMS');
@@ -390,7 +389,12 @@ const Restaurant = ({route, navigation}) => {
                 alignItems: 'center',
                 borderRadius: SIZES.radius,
               }}
-              onPress={() => navigation.navigate('OrderDelivery')}>
+              onPress={() =>
+                navigation.navigate('OrderDelivery', {
+                  restaurant: restaurant,
+                  currentLocation: currentLocation,
+                })
+              }>
               <Text style={{color: COLORS.white, ...FONTS.h2}}>Order</Text>
             </TouchableOpacity>
           </View>

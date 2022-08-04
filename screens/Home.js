@@ -17,8 +17,8 @@ const Home = ({navigation}) => {
   const initialCurrentLocation = {
     streetName: 'Kuching',
     gps: {
-      latitude: 1.5496614931250685,
-      longitude: 110.36381866919922,
+      latitude: -22.9096262,
+      longitude: -43.2023758,
     },
   };
 
@@ -90,8 +90,8 @@ const Home = ({navigation}) => {
       photo: images.burger_restaurant_1,
       duration: '30 - 45 min',
       location: {
-        latitude: 1.5347282806345879,
-        longitude: 110.35632207358996,
+        latitude: -22.911494,
+        longitude: -43.194072,
       },
       courier: {
         avatar: images.avatar_1,
@@ -133,8 +133,8 @@ const Home = ({navigation}) => {
       photo: images.pizza_restaurant,
       duration: '15 - 20 min',
       location: {
-        latitude: 1.556306570595712,
-        longitude: 110.35504616746915,
+        latitude: -22.915526,
+        longitude: -43.206024,
       },
       courier: {
         avatar: images.avatar_2,
@@ -185,8 +185,8 @@ const Home = ({navigation}) => {
       photo: images.hot_dog_restaurant,
       duration: '20 - 25 min',
       location: {
-        latitude: 1.5238753474714375,
-        longitude: 110.34261833833622,
+        latitude: -22.9096262,
+        longitude: -43.2023758,
       },
       courier: {
         avatar: images.avatar_3,
@@ -212,8 +212,8 @@ const Home = ({navigation}) => {
       photo: images.japanese_restaurant,
       duration: '10 - 15 min',
       location: {
-        latitude: 1.5578068150528928,
-        longitude: 110.35482523764315,
+        latitude: -22.9096262,
+        longitude: -43.2023758,
       },
       courier: {
         avatar: images.avatar_4,
@@ -239,8 +239,8 @@ const Home = ({navigation}) => {
       photo: images.noodle_shop,
       duration: '15 - 20 min',
       location: {
-        latitude: 1.558050496260768,
-        longitude: 110.34743759630511,
+        latitude: -22.9096262,
+        longitude: -43.2023758,
       },
       courier: {
         avatar: images.avatar_4,
@@ -290,8 +290,8 @@ const Home = ({navigation}) => {
       photo: images.kek_lapis_shop,
       duration: '35 - 40 min',
       location: {
-        latitude: 1.5573478487252896,
-        longitude: 110.35568783282145,
+        latitude: -22.9096262,
+        longitude: -43.2023758,
       },
       courier: {
         avatar: images.avatar_1,
@@ -344,7 +344,7 @@ const Home = ({navigation}) => {
   }
 
   function getCategoryNameById(id) {
-    let category = categories.filter(a => a.id == id);
+    let category = categories.filter(a => a.id === id);
 
     // if (category.length > 0) {
     //   console.log(category[0].name);
@@ -355,6 +355,7 @@ const Home = ({navigation}) => {
   }
 
   function renderHeader() {
+    console.warn(currentLocation);
     return (
       <View style={{flexDirection: 'row', height: 50}}>
         <TouchableOpacity
